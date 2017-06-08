@@ -14,5 +14,4 @@ public class AulaTest {
 		aula.asignar(materia);
 		assertTrue(aula._materias[14] != null);
 	}
-
 }

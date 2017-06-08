@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Solver 
 {
 	private ArrayList<Materia> _materias;
-	private ArrayList<Aula> _aulas;
+    ArrayList<Aula> _aulas;
 	
 	public Solver(ArrayList<Materia> materias)
 	{
@@ -13,8 +13,23 @@ public class Solver
 		_aulas = new ArrayList<Aula>();
 	}
 	
-	public void asignarMateria()
+	public void asignarMaterias()
 	{
-		// TODO: hacer
+		if(_aulas.size()==0) _aulas.add(new Aula());
+		
+		int i = 0;
+		
+		for(Materia materia : _materias)
+		{
+			while(!(_aulas.get(i).asignar(materia)))
+			{
+				i++;
+				if(i >= _aulas.size())
+				{
+					Aula aula = new Aula();
+					_aulas.add(aula);
+				}
+			}
+		}
 	}
 }
