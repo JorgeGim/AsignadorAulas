@@ -9,10 +9,18 @@ public class Materia
 	
 	public Materia(String nombre, int inicio, int fin, int id)
 	{
+		chequearHorario(inicio);
+		chequearHorario(fin);
+			
 		_nombre = nombre;
 		_inicio = inicio;
 		_fin = fin;
 		_id = id;
+	}
+
+	private void chequearHorario(int horario) {
+		if(horario < 0 || horario > 24 )
+			throw new IllegalArgumentException("Se intentó agregar una materia con horario incorrecto!");
 	}
 
 	public String getNombre() {
