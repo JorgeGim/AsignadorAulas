@@ -15,7 +15,7 @@ public class Solver
 	
 	public void asignarMaterias()
 	{
-		if(_aulas.size()==0) _aulas.add(new Aula());
+		if(_aulas.size() == 0) _aulas.add(new Aula());
 		
 		int i = 0;
 		

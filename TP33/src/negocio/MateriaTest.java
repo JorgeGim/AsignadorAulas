@@ -26,5 +26,4 @@ public class MateriaTest {
 	{
 		Materia materia = new Materia("Base de datos", 14, -1, 2);
 	}
-
 }

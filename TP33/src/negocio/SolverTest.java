@@ -9,15 +9,42 @@ import org.junit.Test;
 public class SolverTest {
 
 	@Test
-	public void asignarMateriaTest()
+	public void asignarMateria1Test()
 	{
 		ArrayList<Materia> materias = inicializarMaterias();
 		Solver solver = new Solver(materias);
 		solver.asignarMaterias();
 		
 		assertTrue(solver._aulas.get(0)._materias[14].get_id()==1);
+	}
+	
+	@Test
+	public void asignarMateria2Test()
+	{
+		ArrayList<Materia> materias = inicializarMaterias();
+		Solver solver = new Solver(materias);
+		solver.asignarMaterias();
+		
 		assertTrue(solver._aulas.get(0)._materias[8].get_id()==2);
+	}
+	
+	@Test
+	public void asignarMateria3Test()
+	{
+		ArrayList<Materia> materias = inicializarMaterias();
+		Solver solver = new Solver(materias);
+		solver.asignarMaterias();
+		
 		assertTrue(solver._aulas.get(1)._materias[8].get_id()==3);
+	}
+	
+	@Test
+	public void asignarMateria4Test()
+	{
+		ArrayList<Materia> materias = inicializarMaterias();
+		Solver solver = new Solver(materias);
+		solver.asignarMaterias();
+		
 		assertTrue(solver._aulas.get(1)._materias[18].get_id()==4);
 	}
 	
