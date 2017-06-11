@@ -11,25 +11,26 @@ public class Solver
 	{
 		_materias = materias;
 		_aulas = new ArrayList<Aula>();
+		_aulas.add(new Aula());
 	}
 	
-	public void asignarMaterias()
-	{
-		if(_aulas.size() == 0) _aulas.add(new Aula());
+	public void asignarAulas()
+	{			
+		for(Materia materia : _materias)
+		{
+			ubicarEnAula(materia);
+		}
+	}
+	
+	private void ubicarEnAula(Materia materia){
 		
 		int i = 0;
 		
-		for(Materia materia : _materias)
+		while(!(_aulas.get(i).asignar(materia)))
 		{
-			while(!(_aulas.get(i).asignar(materia)))
-			{
-				i++;
-				if(i >= _aulas.size())
-				{
-					Aula aula = new Aula();
-					_aulas.add(aula);
-				}
-			}
+			i++;
+			
+			if(i >= _aulas.size())	_aulas.add(new Aula());
 		}
 	}
 }

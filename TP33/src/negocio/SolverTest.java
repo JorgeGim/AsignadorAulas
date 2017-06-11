@@ -13,7 +13,7 @@ public class SolverTest {
 	{
 		ArrayList<Materia> materias = inicializarMaterias();
 		Solver solver = new Solver(materias);
-		solver.asignarMaterias();
+		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(0)._materias[14].get_id()==1);
 	}
@@ -23,7 +23,7 @@ public class SolverTest {
 	{
 		ArrayList<Materia> materias = inicializarMaterias();
 		Solver solver = new Solver(materias);
-		solver.asignarMaterias();
+		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(0)._materias[8].get_id()==2);
 	}
@@ -33,7 +33,7 @@ public class SolverTest {
 	{
 		ArrayList<Materia> materias = inicializarMaterias();
 		Solver solver = new Solver(materias);
-		solver.asignarMaterias();
+		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(1)._materias[8].get_id()==3);
 	}
@@ -43,9 +43,9 @@ public class SolverTest {
 	{
 		ArrayList<Materia> materias = inicializarMaterias();
 		Solver solver = new Solver(materias);
-		solver.asignarMaterias();
+		solver.asignarAulas();
 		
-		assertTrue(solver._aulas.get(1)._materias[18].get_id()==4);
+		assertTrue(solver._aulas.get(0)._materias[18].get_id()==4);
 	}
 	
 	@Test
@@ -53,7 +53,7 @@ public class SolverTest {
 	{
 		ArrayList<Materia> materias = mismosHorarios();
 		Solver solver = new Solver(materias);
-		solver.asignarMaterias();
+		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.size() == materias.size());
 	}

@@ -3,11 +3,13 @@ package negocio;
 public class Aula 
 {
     Materia[] _materias;
+    private int _espacio;
 	private boolean _llena;
 	
 	public Aula()
 	{
-		_materias = new Materia[24];
+		_espacio = 24;
+		_materias = new Materia[_espacio];
 		_llena = false;
 	}
 	
@@ -18,7 +20,10 @@ public class Aula
 			for(int i=materia.getInicio(); i<materia.getFin(); ++i)
 			{
 				_materias[i] = materia;
+				_espacio--;
 			}
+			
+			if(_espacio==0) _llena = true;
 			
 			return true;
 		}
@@ -28,7 +33,7 @@ public class Aula
 
 	private boolean chequearEspacio(Materia materia) 
 	{
-		for(int i=materia.getInicio(); i<materia.getFin(); ++i)
+		for(int i=materia.getInicio(); i<materia.getFin(); i++)
 		{
 			if(_materias[i] != null)
 				return false;
