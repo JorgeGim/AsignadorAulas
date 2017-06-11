@@ -2,12 +2,14 @@ package negocio;
 
 public class Aula 
 {
+	int _id;
     Materia[] _materias;
     private int _espacio;
 	private boolean _llena;
 	
-	public Aula()
+	public Aula(int id)
 	{
+		_id = id;
 		_espacio = 24;
 		_materias = new Materia[_espacio];
 		_llena = false;
@@ -40,5 +42,10 @@ public class Aula
 		}
 		
 		return true;
+	}
+	
+	public boolean estaLlena(){
+		
+		return _llena;
 	}
 }

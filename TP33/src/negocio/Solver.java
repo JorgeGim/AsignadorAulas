@@ -4,14 +4,26 @@ import java.util.ArrayList;
 
 public class Solver 
 {
-	private ArrayList<Materia> _materias;
+	ArrayList<Materia> _materias;
     ArrayList<Aula> _aulas;
+    ArrayList<Aula> _aulasDisponibles;
+    ArrayList<Espectador> _espectadores;
 	
 	public Solver(ArrayList<Materia> materias)
 	{
 		_materias = materias;
-		_aulas = new ArrayList<Aula>();
-		_aulas.add(new Aula());
+		_aulas = new ArrayList<>();
+		_aulasDisponibles = new ArrayList<>();
+		_espectadores = new ArrayList<>();
+		
+		Aula a = new Aula(_aulas.size());
+		_aulas.add(a);
+		_aulasDisponibles.add(a);
+	}
+	
+	public void agregarEspectador(Espectador e){
+		
+		_espectadores.add(e);
 	}
 	
 	public void asignarAulas()
@@ -19,6 +31,7 @@ public class Solver
 		for(Materia materia : _materias)
 		{
 			ubicarEnAula(materia);
+			notificarEspectadores();
 		}
 	}
 	
@@ -26,11 +39,28 @@ public class Solver
 		
 		int i = 0;
 		
-		while(!(_aulas.get(i).asignar(materia)))
+		while(!(_aulasDisponibles.get(i).asignar(materia)))
 		{
 			i++;
 			
-			if(i >= _aulas.size())	_aulas.add(new Aula());
+			if(i >= _aulasDisponibles.size())
+			{
+				Aula a = new Aula(_aulas.size());
+				_aulas.add(a);
+				_aulasDisponibles.add(a);
+			}
+		}
+		
+		Aula a = _aulasDisponibles.get(i);
+		
+		if(a.estaLlena()) _aulasDisponibles.remove(a);
+	}
+
+	private void notificarEspectadores(){
+		
+		for(Espectador e : _espectadores){
+			
+			e.notificar();
 		}
 	}
 }
