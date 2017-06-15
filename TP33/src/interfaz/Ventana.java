@@ -5,50 +5,64 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+
+import datos.MateriasGSON;
+import negocio.Aula;
+import negocio.Solver;
 
 public class Ventana extends JPanel 
 {
 	private boolean debug = false;
+	private JFrame frame;
+	MateriasGSON _materias;
+	ArrayList<Aula> _aulas;
+	Solver _solver;
+	JTable _tabla;
+	DefaultTableModel _model;
+	
 	
 	public Ventana()
 	{
 		super(new GridLayout(1, 0));
+	
+
+		String[] aulas;
+		String[] materias;
 		
-		String[] datosMateria = {"Materia","Inicio","Fin","Aula"};
+		_tabla = new JTable();
+		_model = new DefaultTableModel();
 		
-		 Object[][] data = {
-			        {"Kathy", "Smith",
-			         "Snowboarding", new Integer(5), new Boolean(false)},
-			        {"John", "Doe",
-			         "Rowing", new Integer(3), new Boolean(true)},
-			        {"Sue", "Black",
-			         "Knitting", new Integer(2), new Boolean(false)},
-			        {"Jane", "White",
-			         "Speed reading", new Integer(20), new Boolean(true)},
-			        {"Joe", "Brown",
-			         "Pool", new Integer(10), new Boolean(false)}
-			        };
+		_model.addColumn("AULAS");
+		
+		for(int i=0;i<24;i++){
+			_model.addColumn(i+"hs");
+		}
+		
+		 _tabla.setModel(_model);
 		 
-		 final JTable tabla = new JTable(data, datosMateria);
-		 tabla.setPreferredScrollableViewportSize(new Dimension(500, 70));
-		 tabla.setFillsViewportHeight(true);
+		 _tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		 
+		 _tabla.setPreferredScrollableViewportSize(new Dimension(500, 70));
+		 _tabla.setFillsViewportHeight(true);
 		   if (debug) {
-	            tabla.addMouseListener(new MouseAdapter() {
+	            _tabla.addMouseListener(new MouseAdapter() {
 	                public void mouseClicked(MouseEvent e) {
-	                    printDebugData(tabla);
+	                    printDebugData(_tabla);
 	                }
 	            });
 	        }
 	 
 	        //Create the scroll pane and add the table to it.
-	        JScrollPane scrollPane = new JScrollPane(tabla);
+	        JScrollPane scrollPane = new JScrollPane(_tabla);
 	 
 	        //Add the scroll pane to this panel.
 	        add(scrollPane);
