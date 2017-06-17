@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Solver 
 {
-	ArrayList<Materia> _materias;
-    ArrayList<Aula> _aulas;
+	public ArrayList<Materia> _materias;
+    public ArrayList<Aula> _aulas;
     ArrayList<Aula> _aulasDisponibles;
     ArrayList<Espectador> _espectadores;
 	

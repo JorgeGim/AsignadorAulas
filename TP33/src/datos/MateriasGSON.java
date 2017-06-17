@@ -15,9 +15,9 @@ public class MateriasGSON
 {
 	private ArrayList<Materia> _materias;
 	
-	public MateriasGSON()
+	public MateriasGSON(ArrayList<Materia> materias)
 	{
-		_materias = new ArrayList<Materia>();
+		_materias = materias;
 	}
 	
 	public void addMateria(Materia materia)
@@ -35,7 +35,7 @@ public class MateriasGSON
 		return _materias.get(i);
 	}
 	
-	public void generarJSON(String archivo)
+	public void generarGSON(String archivo)
 	{
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(this);
@@ -50,7 +50,7 @@ public class MateriasGSON
 		}
 	}
 	
-	public static MateriasGSON leerJSON(String archivo)
+	public static MateriasGSON leerGSON(String archivo)
 	{
 		Gson gson = new Gson();
 		MateriasGSON ret = null;

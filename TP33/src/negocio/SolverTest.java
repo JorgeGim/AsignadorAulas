@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-public class SolverTest {
+class SolverTest {
 
 	@Test
 	public void asignarMateria1Test()
