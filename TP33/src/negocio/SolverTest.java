@@ -4,15 +4,26 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Before;
 import org.junit.Test;
 
-class SolverTest {
+import datos.MateriasGSON;
+
+public class SolverTest {
+	
+	@Before
+	public void inicializar(){
+		
+		inicializarMaterias();
+		mismosHorarios();
+		aulaCompleta();
+	}
 
 	@Test
 	public void asignarMateria1Test()
 	{
-		ArrayList<Materia> materias = inicializarMaterias();
-		Solver solver = new Solver(materias);
+		Solver solver = new Solver();
+		solver.cargarMaterias("materiasTest.GSON");
 		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(0)._materias[14].get_id()==1);
@@ -21,8 +32,8 @@ class SolverTest {
 	@Test
 	public void asignarMateria2Test()
 	{
-		ArrayList<Materia> materias = inicializarMaterias();
-		Solver solver = new Solver(materias);
+		Solver solver = new Solver();
+		solver.cargarMaterias("materiasTest.GSON");
 		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(0)._materias[8].get_id()==2);
@@ -31,8 +42,8 @@ class SolverTest {
 	@Test
 	public void asignarMateria3Test()
 	{
-		ArrayList<Materia> materias = inicializarMaterias();
-		Solver solver = new Solver(materias);
+		Solver solver = new Solver();
+		solver.cargarMaterias("materiasTest.GSON");
 		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(1)._materias[8].get_id()==3);
@@ -41,8 +52,8 @@ class SolverTest {
 	@Test
 	public void asignarMateria4Test()
 	{
-		ArrayList<Materia> materias = inicializarMaterias();
-		Solver solver = new Solver(materias);
+		Solver solver = new Solver();
+		solver.cargarMaterias("materiasTest.GSON");
 		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(0)._materias[18].get_id()==4);
@@ -51,25 +62,25 @@ class SolverTest {
 	@Test
 	public void mismosHorariosTest()
 	{
-		ArrayList<Materia> materias = mismosHorarios();
-		Solver solver = new Solver(materias);
+		Solver solver = new Solver();
+		solver.cargarMaterias("mismosHorariosTest.GSON");
 		solver.asignarAulas();
 		
-		assertTrue(solver._aulas.size() == materias.size());
+		assertTrue(solver._aulas.size() == MateriasGSON.leerGSON("mismosHorariosTest.GSON").getTamaño());
 	}
 	
 	@Test
 	public void llenarAulaTest()
 	{
-		ArrayList<Materia> materias = aulaCompleta();
-		Solver solver = new Solver(materias);
+		Solver solver = new Solver();
+		solver.cargarMaterias("aulaCompleta.GSON");
 		solver.asignarAulas();
 		
 		assertTrue(solver._aulasDisponibles.size() == 0);
 		assertTrue(solver._aulas.size() == 1);
 	}
 
-	private ArrayList<Materia> inicializarMaterias() 
+	private void inicializarMaterias() 
 	{
 		ArrayList<Materia> materias = new ArrayList<Materia>();
 		
@@ -82,10 +93,11 @@ class SolverTest {
 		materias.add(m3);
 		materias.add(m4);
 		
-		return materias;
+		MateriasGSON m = new MateriasGSON(materias);
+		m.generarGSON("materiasTest.GSON");
 	}
 	
-	private ArrayList<Materia> mismosHorarios() 
+	private void mismosHorarios() 
 	{
 		ArrayList<Materia> materias = new ArrayList<Materia>();
 		
@@ -98,10 +110,11 @@ class SolverTest {
 		materias.add(m3);
 		materias.add(m4);
 		
-		return materias;
+		MateriasGSON m = new MateriasGSON(materias);
+		m.generarGSON("mismosHorariosTest.GSON");
 	}
 	
-	private ArrayList<Materia> aulaCompleta() 
+	private void aulaCompleta() 
 	{
 		ArrayList<Materia> materias = new ArrayList<Materia>();
 		
@@ -114,6 +127,7 @@ class SolverTest {
 		materias.add(m3);
 		materias.add(m4);
 		
-		return materias;
+		MateriasGSON m = new MateriasGSON(materias);
+		m.generarGSON("aulaCompleta.GSON");
 	}
 }

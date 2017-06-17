@@ -1,6 +1,7 @@
 package negocio;
 
 import java.util.ArrayList;
+import datos.MateriasGSON;
 
 public class Solver 
 {
@@ -9,9 +10,9 @@ public class Solver
     ArrayList<Aula> _aulasDisponibles;
     ArrayList<Espectador> _espectadores;
 	
-	public Solver(ArrayList<Materia> materias)
+	public Solver()
 	{
-		_materias = materias;
+		_materias = new ArrayList<>();
 		_aulas = new ArrayList<>();
 		_aulasDisponibles = new ArrayList<>();
 		_espectadores = new ArrayList<>();
@@ -26,6 +27,12 @@ public class Solver
 		_espectadores.add(e);
 	}
 	
+	public void cargarMaterias(String archivo){
+		
+		MateriasGSON m = MateriasGSON.leerGSON(archivo);
+		_materias = m.getMaterias();
+	}
+	
 	public void asignarAulas()
 	{			
 		for(Materia materia : _materias)
@@ -34,6 +41,8 @@ public class Solver
 			notificarEspectadores();
 		}
 	}
+	
+	
 	
 	private void ubicarEnAula(Materia materia){
 		

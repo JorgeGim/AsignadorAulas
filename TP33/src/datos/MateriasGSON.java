@@ -35,6 +35,11 @@ public class MateriasGSON
 		return _materias.get(i);
 	}
 	
+	public ArrayList<Materia> getMaterias(){
+		
+		return _materias;
+	}
+	
 	public void generarGSON(String archivo)
 	{
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
