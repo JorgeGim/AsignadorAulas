@@ -1,7 +1,7 @@
 package negocio;
 
 import java.util.ArrayList;
-import datos.MateriasGSON;
+import datos.MateriasJSON;
 
 public class Solver 
 {
@@ -29,7 +29,7 @@ public class Solver
 	
 	public void cargarMaterias(String archivo){
 		
-		MateriasGSON m = MateriasGSON.leerGSON(archivo);
+		MateriasJSON m = MateriasJSON.leerGSON(archivo);
 		_materias = m.getMaterias();
 	}
 	

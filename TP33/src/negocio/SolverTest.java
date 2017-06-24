@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import datos.MateriasGSON;
+import datos.MateriasJSON;
 
 public class SolverTest {
 	
@@ -66,7 +66,7 @@ public class SolverTest {
 		solver.cargarMaterias("mismosHorariosTest.GSON");
 		solver.asignarAulas();
 		
-		assertTrue(solver._aulas.size() == MateriasGSON.leerGSON("mismosHorariosTest.GSON").getTamaño());
+		assertTrue(solver._aulas.size() == MateriasJSON.leerGSON("mismosHorariosTest.GSON").getTamaño());
 	}
 	
 	@Test
@@ -93,7 +93,7 @@ public class SolverTest {
 		materias.add(m3);
 		materias.add(m4);
 		
-		MateriasGSON m = new MateriasGSON(materias);
+		MateriasJSON m = new MateriasJSON(materias);
 		m.generarGSON("materiasTest.GSON");
 	}
 	
@@ -110,7 +110,7 @@ public class SolverTest {
 		materias.add(m3);
 		materias.add(m4);
 		
-		MateriasGSON m = new MateriasGSON(materias);
+		MateriasJSON m = new MateriasJSON(materias);
 		m.generarGSON("mismosHorariosTest.GSON");
 	}
 	
@@ -127,7 +127,7 @@ public class SolverTest {
 		materias.add(m3);
 		materias.add(m4);
 		
-		MateriasGSON m = new MateriasGSON(materias);
+		MateriasJSON m = new MateriasJSON(materias);
 		m.generarGSON("aulaCompleta.GSON");
 	}
 }

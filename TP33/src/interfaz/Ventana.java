@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
-import datos.MateriasGSON;
+import datos.MateriasJSON;
 import negocio.Aula;
 import negocio.Solver;
 
@@ -23,7 +23,7 @@ public class Ventana extends JPanel
 {
 	private boolean debug = false;
 	private JFrame frame;
-	MateriasGSON _materias;
+	MateriasJSON _materias;
 	ArrayList<Aula> _aulas;
 	Solver _solver;
 	JTable _tabla;

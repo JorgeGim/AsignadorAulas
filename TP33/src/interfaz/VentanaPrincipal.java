@@ -9,7 +9,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import datos.MateriasGSON;
+import datos.MateriasJSON;
 import negocio.Aula;
 import negocio.Solver;
 

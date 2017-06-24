@@ -3,14 +3,14 @@ package interfaz;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
-import datos.MateriasGSON;
+import datos.MateriasJSON;
 import negocio.Aula;
 import negocio.Solver;
 
 public class MainForm 
 {
 	static ArrayList<Aula> _aulas;
-	static MateriasGSON _materias;
+	static MateriasJSON _materias;
 	static Solver _solver;
 	static VentanaPrincipal _ventana;
 	

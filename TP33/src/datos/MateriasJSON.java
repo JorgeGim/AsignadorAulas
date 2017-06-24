@@ -11,11 +11,11 @@ import com.google.gson.GsonBuilder;
 
 import negocio.Materia;
 
-public class MateriasGSON 
+public class MateriasJSON 
 {
 	private ArrayList<Materia> _materias;
 	
-	public MateriasGSON(ArrayList<Materia> materias)
+	public MateriasJSON(ArrayList<Materia> materias)
 	{
 		_materias = materias;
 	}
@@ -55,15 +55,15 @@ public class MateriasGSON
 		}
 	}
 	
-	public static MateriasGSON leerGSON(String archivo)
+	public static MateriasJSON leerGSON(String archivo)
 	{
 		Gson gson = new Gson();
-		MateriasGSON ret = null;
+		MateriasJSON ret = null;
 		
 		try
 		{
 			BufferedReader br = new BufferedReader(new FileReader(archivo));
-			ret = gson.fromJson(br, MateriasGSON.class);
+			ret = gson.fromJson(br, MateriasJSON.class);
 		} catch(IOException e)
 		{
 			e.printStackTrace();

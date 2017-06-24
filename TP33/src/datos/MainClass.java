@@ -12,14 +12,14 @@ public class MainClass
 		Materia m2 = new Materia("Organizacion del computador", 8, 12, 1);
 		Materia m3 = new Materia("SOR", 8, 12, 1);
 		
-		MateriasGSON lasMaterias = new MateriasGSON(new ArrayList<Materia>());
+		MateriasJSON lasMaterias = new MateriasJSON(new ArrayList<Materia>());
 		lasMaterias.addMateria(m1);
 		lasMaterias.addMateria(m2);
 		lasMaterias.addMateria(m3);
 		
 		lasMaterias.generarGSON("materias.GSON");
 		
-		MateriasGSON leidas = MateriasGSON.leerGSON("materias.GSON");
+		MateriasJSON leidas = MateriasJSON.leerGSON("materias.GSON");
 		
 		for(int i=0; i<leidas.getTamaño(); ++i)
 		{
