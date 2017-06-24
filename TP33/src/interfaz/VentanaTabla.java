@@ -1,21 +1,12 @@
 package interfaz;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Panel;
-import java.util.ArrayList;
-
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-import datos.MateriasJSON;
-import negocio.Aula;
-import negocio.Espectador;
-import negocio.Solver;
 
 public class VentanaTabla {
 
@@ -25,16 +16,11 @@ public class VentanaTabla {
 	EspectadorTabla _espectador;
 	
 	public VentanaTabla() {
-		initialize();
-	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		frame = new JInternalFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(0,100, 800, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 		
 		_tabla = new JTable();
 		_model = new DefaultTableModel();
@@ -54,10 +40,11 @@ public class VentanaTabla {
 		Panel panel = new Panel();
 		panel.add(scrollPane);
 		
-		
-		_tabla.setPreferredScrollableViewportSize(new Dimension(440, 219));
+		_tabla.setPreferredScrollableViewportSize(new Dimension(800, 500));
 		_tabla.setFillsViewportHeight(true);
 		
 		frame.getContentPane().add(panel);
+		
+		_espectador = new EspectadorTabla(frame,_tabla,_model);
 	}
 }

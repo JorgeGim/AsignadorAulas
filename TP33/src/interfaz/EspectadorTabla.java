@@ -5,6 +5,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import negocio.Espectador;
+import negocio.Materia;
 
 public class EspectadorTabla implements Espectador{
 	
@@ -20,7 +21,7 @@ public class EspectadorTabla implements Espectador{
 	}
 
 	@Override
-	public void notificar() {
+	public void notificar(int aula, Materia m) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -3,6 +3,7 @@ package interfaz;
 import javax.swing.JTable;
 
 import negocio.Espectador;
+import negocio.Materia;
 import negocio.Solver;
 
 public class ObservadorMaterias implements Espectador 
@@ -14,11 +15,10 @@ public class ObservadorMaterias implements Espectador
 		_solver = solver;
 		_table = table;
 	}
-	
 	@Override
-	public void notificar() 
-	{
-	
+	public void notificar(int aula, Materia m) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

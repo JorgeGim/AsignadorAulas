@@ -31,14 +31,15 @@ public class Solver
 		
 		MateriasJSON m = MateriasJSON.leerGSON(archivo);
 		_materias = m.getMaterias();
+		
+		asignarAulas();
 	}
 	
-	public void asignarAulas()
+	private void asignarAulas()
 	{			
 		for(Materia materia : _materias)
 		{
 			ubicarEnAula(materia);
-			notificarEspectadores();
 		}
 	}
 	
@@ -60,16 +61,13 @@ public class Solver
 			}
 		}
 		
+		for(Espectador e : _espectadores){
+			
+			e.notificar(i,materia);
+		}
+		
 		Aula a = _aulasDisponibles.get(i);
 		
 		if(a.estaLlena()) _aulasDisponibles.remove(a);
-	}
-
-	private void notificarEspectadores(){
-		
-		for(Espectador e : _espectadores){
-			
-			e.notificar();
-		}
 	}
 }

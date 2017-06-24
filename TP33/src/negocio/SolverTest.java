@@ -24,7 +24,6 @@ public class SolverTest {
 	{
 		Solver solver = new Solver();
 		solver.cargarMaterias("materiasTest.GSON");
-		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(0)._materias[14].get_id()==1);
 	}
@@ -34,7 +33,6 @@ public class SolverTest {
 	{
 		Solver solver = new Solver();
 		solver.cargarMaterias("materiasTest.GSON");
-		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(0)._materias[8].get_id()==2);
 	}
@@ -44,7 +42,6 @@ public class SolverTest {
 	{
 		Solver solver = new Solver();
 		solver.cargarMaterias("materiasTest.GSON");
-		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(1)._materias[8].get_id()==3);
 	}
@@ -54,7 +51,6 @@ public class SolverTest {
 	{
 		Solver solver = new Solver();
 		solver.cargarMaterias("materiasTest.GSON");
-		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.get(0)._materias[18].get_id()==4);
 	}
@@ -64,7 +60,6 @@ public class SolverTest {
 	{
 		Solver solver = new Solver();
 		solver.cargarMaterias("mismosHorariosTest.GSON");
-		solver.asignarAulas();
 		
 		assertTrue(solver._aulas.size() == MateriasJSON.leerGSON("mismosHorariosTest.GSON").getTamaño());
 	}
@@ -74,7 +69,6 @@ public class SolverTest {
 	{
 		Solver solver = new Solver();
 		solver.cargarMaterias("aulaCompleta.GSON");
-		solver.asignarAulas();
 		
 		assertTrue(solver._aulasDisponibles.size() == 0);
 		assertTrue(solver._aulas.size() == 1);
