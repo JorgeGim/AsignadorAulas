@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 
 import negocio.Materia;
 
@@ -64,10 +65,15 @@ public class MateriasJSON
 		{
 			BufferedReader br = new BufferedReader(new FileReader(archivo));
 			ret = gson.fromJson(br, MateriasJSON.class);
-		} catch(IOException e)
+		}
+		catch(IOException e)
 		{
 			throw new IllegalArgumentException("El sistema no puede encontrar el archivo especificado");
 		}
+		catch(JsonSyntaxException e){
+			throw new IllegalArgumentException("El sistema no puede encontrar el archivo especificado");
+		}
+		
 		
 		return ret;
 	}

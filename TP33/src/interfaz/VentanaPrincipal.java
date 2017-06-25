@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -13,15 +14,18 @@ import negocio.Gatillo;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 public class VentanaPrincipal {
 
 	private JFrame _frame;
 	private Gatillo _gatillo;
 	private VentanaTabla _tabla;
+	private JLabel _instruccion;
 	private JTextField _ubicacion;
 	private JLabel _error;
 	private JButton _buscar;
+	private JFileChooser _buscador;
 	private JButton _cargar;
 
 	public VentanaPrincipal(Gatillo g) {
@@ -29,9 +33,11 @@ public class VentanaPrincipal {
 		_frame = new JFrame();
 		_gatillo = g;
 		_tabla = new VentanaTabla();
+		_instruccion = new JLabel("**Ingrese la dirección del archivo**");
 		_ubicacion = new JTextField();
 		_error = new JLabel("Archivo no encontrado!!!");
 		_buscar = new JButton("BUSCAR");
+		_buscador = new JFileChooser();
 		_cargar = new JButton("CARGAR");
 	
 		_frame.setBounds(0, 0, 800, 600);
@@ -42,9 +48,12 @@ public class VentanaPrincipal {
 		JInternalFrame iFrame = _tabla.frame;
 		_frame.getContentPane().add(iFrame);
 		
-		_ubicacion.setBounds(10, 56, 765, 30);
+		_instruccion.setBounds(10,56,765,17);
+		_frame.getContentPane().add(_instruccion);
+		
+		_ubicacion.setBounds(10, 76, 765, 17);
 		Font aux = _ubicacion.getFont();
-		_ubicacion.setFont(new Font(aux.getFontName(), aux.getStyle(), 25));
+		_ubicacion.setFont(new Font(aux.getFontName(), aux.getStyle(), 12));
 		_frame.getContentPane().add(_ubicacion);
 		
 		_error.setBounds(450, 11, 350, 30);
@@ -56,6 +65,13 @@ public class VentanaPrincipal {
 		_buscar.setBounds(10, 11, 200, 30);
 		_buscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				_buscador.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+				_buscador.showOpenDialog(_buscador);
+				
+				File archivo = _buscador.getSelectedFile(); // obtiene el archivo seleccionado
+				_ubicacion.setText(archivo.getAbsolutePath());
+			
 			}
 		});
 		_frame.getContentPane().add(_buscar);
@@ -64,7 +80,7 @@ public class VentanaPrincipal {
 		_cargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				if(_gatillo.gatillar(_ubicacion.getText()+".GSON"))
+				if(_gatillo.gatillar(_ubicacion.getText()))
 					_error.setVisible(false);
 				
 				else
