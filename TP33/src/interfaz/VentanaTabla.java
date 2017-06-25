@@ -25,6 +25,11 @@ public class VentanaTabla {
 		((BasicInternalFrameUI) frame.getUI()).setNorthPane(null);
 		frame.setVisible(true);
 		
+		//Falta:
+
+		//	evitar que se pierda la barra de desplazamiento horizontal en el frame;
+		//	limpiar la tabla cuando se cargan nuevos datos;
+		
 		_tabla = new JTable();
 		_model = new DefaultTableModel();
 		
@@ -39,18 +44,23 @@ public class VentanaTabla {
 		 _tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		JScrollPane scrollPane = new JScrollPane(_tabla);
+		scrollPane.setBounds(0,0,757,410);
 		
-		scrollPane.setHorizontalScrollBarPolicy(javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); 
+		scrollPane.setHorizontalScrollBarPolicy(javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		//scrollPane.getHorizontalScrollBar().setLocation(757,410);
 		scrollPane.setVerticalScrollBarPolicy(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
 	    
 		Panel panel = new Panel();
+		panel.setBounds(0,0,757,410);
 		panel.add(scrollPane);
 		
-		_tabla.setPreferredScrollableViewportSize(new Dimension(757, 410));
-		_tabla.setFillsViewportHeight(true);
+		
+		
+		//_tabla.setPreferredScrollableViewportSize(new Dimension(757, 410));
+	//	_tabla.setFillsViewportHeight(true);
 		
 		frame.getContentPane().add(panel);
 		
-		_espectador = new EspectadorTabla(frame,_tabla,_model);
+		_espectador = new EspectadorTabla(frame,_model);
 	}
 }
