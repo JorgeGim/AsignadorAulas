@@ -1,6 +1,7 @@
 package negocio;
 
 import java.util.ArrayList;
+
 import datos.MateriasJSON;
 
 public class Solver 
@@ -13,13 +14,8 @@ public class Solver
 	public Solver()
 	{
 		_materias = new ArrayList<>();
-		_aulas = new ArrayList<>();
-		_aulasDisponibles = new ArrayList<>();
 		_espectadores = new ArrayList<>();
-		
-		Aula a = new Aula(_aulas.size());
-		_aulas.add(a);
-		_aulasDisponibles.add(a);
+		limpiarAulas();
 	}
 	
 	public void agregarEspectador(Espectador e){
@@ -28,11 +24,17 @@ public class Solver
 	}
 	
 	public void cargarMaterias(String archivo){
-		
-		MateriasJSON m = MateriasJSON.leerGSON(archivo);
-		_materias = m.getMaterias();
-		
-		asignarAulas();
+		try{
+			MateriasJSON m = MateriasJSON.leerGSON(archivo);
+			_materias = m.getMaterias();
+			
+			limpiarAulas();
+			asignarAulas();
+		}
+		catch(IllegalArgumentException e){
+			
+			throw new IllegalArgumentException("No se encuentra el listado de materias con nombre: "+ archivo);
+		}
 	}
 	
 	private void asignarAulas()
@@ -69,5 +71,14 @@ public class Solver
 		Aula a = _aulasDisponibles.get(i);
 		
 		if(a.estaLlena()) _aulasDisponibles.remove(a);
+	}
+	
+	private void limpiarAulas(){
+		
+		_aulas = new ArrayList<>();
+		_aulasDisponibles = new ArrayList<>();
+		Aula a = new Aula(_aulas.size());
+		_aulas.add(a);
+		_aulasDisponibles.add(a);
 	}
 }

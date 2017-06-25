@@ -1,14 +1,21 @@
 package negocio;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class MateriaTest {
 
-	@SuppressWarnings("unused")
+
 	@Test
 	public void happyPath()
 	{
 		Materia materia = new Materia("Base de datos", 14, 18, 2);
+		
+		assertTrue(materia.getNombre().equals("Base de datos"));
+		assertTrue(materia.getInicio()==14);
+		assertTrue(materia.getFin()==18);
+		assertTrue(materia.get_id()==2);
 	}
 	
 	@SuppressWarnings("unused")

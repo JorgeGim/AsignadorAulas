@@ -22,8 +22,7 @@ public class EspectadorTabla implements Espectador{
 
 	@Override
 	public void notificar(int aula, Materia m) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Materia "+ m.getNombre()+" asignada al aula: "+aula);
 	}
 
 }

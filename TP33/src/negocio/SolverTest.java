@@ -18,6 +18,14 @@ public class SolverTest {
 		mismosHorarios();
 		aulaCompleta();
 	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	
+	public void cargaErronea(){
+		
+		Solver solver = new Solver();
+		solver.cargarMaterias("ERROR");
+	}
 
 	@Test
 	public void asignarMateria1Test()

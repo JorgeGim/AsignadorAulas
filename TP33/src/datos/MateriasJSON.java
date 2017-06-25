@@ -66,7 +66,7 @@ public class MateriasJSON
 			ret = gson.fromJson(br, MateriasJSON.class);
 		} catch(IOException e)
 		{
-			e.printStackTrace();
+			throw new IllegalArgumentException("El sistema no puede encontrar el archivo especificado");
 		}
 		
 		return ret;

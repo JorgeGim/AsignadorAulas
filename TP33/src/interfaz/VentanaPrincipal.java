@@ -1,13 +1,16 @@
 package interfaz;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import negocio.Gatillo;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -16,7 +19,8 @@ public class VentanaPrincipal {
 	private JFrame _frame;
 	private Gatillo _gatillo;
 	private VentanaTabla _tabla;
-	private JTextField _texto;
+	private JTextField _ubicacion;
+	private JLabel _error;
 	private JButton _buscar;
 	private JButton _cargar;
 
@@ -25,7 +29,8 @@ public class VentanaPrincipal {
 		_frame = new JFrame();
 		_gatillo = g;
 		_tabla = new VentanaTabla();
-		_texto = new JTextField();
+		_ubicacion = new JTextField();
+		_error = new JLabel("Archivo no encontrado!!!");
 		_buscar = new JButton("BUSCAR");
 		_cargar = new JButton("CARGAR");
 	
@@ -37,10 +42,16 @@ public class VentanaPrincipal {
 		JInternalFrame iFrame = _tabla.frame;
 		_frame.getContentPane().add(iFrame);
 		
-		_texto.setBounds(10, 56, 765, 30);
-		Font aux = _texto.getFont();
-		_texto.setFont(new Font(aux.getFontName(), aux.getStyle(), 25));
-		_frame.getContentPane().add(_texto);
+		_ubicacion.setBounds(10, 56, 765, 30);
+		Font aux = _ubicacion.getFont();
+		_ubicacion.setFont(new Font(aux.getFontName(), aux.getStyle(), 25));
+		_frame.getContentPane().add(_ubicacion);
+		
+		_error.setBounds(450, 11, 350, 30);
+		_error.setFont(_ubicacion.getFont());
+		_error.setForeground(Color.RED);
+		_error.setVisible(false);
+		_frame.getContentPane().add(_error);
 		
 		_buscar.setBounds(10, 11, 200, 30);
 		_buscar.addActionListener(new ActionListener() {
@@ -52,10 +63,15 @@ public class VentanaPrincipal {
 		_cargar.setBounds(220, 11, 200, 30);
 		_cargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				if(_gatillo.gatillar(_ubicacion.getText()+".GSON"))
+					_error.setVisible(false);
+				
+				else
+					_error.setVisible(true);
 			}
 		});
 		_frame.getContentPane().add(_cargar);
-		
 	}
 	
 	public EspectadorTabla getEspectador(){
