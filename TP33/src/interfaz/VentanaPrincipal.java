@@ -80,6 +80,8 @@ public class VentanaPrincipal {
 		_cargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				_tabla.limpiarTabla();
+				
 				if(_gatillo.gatillar(_ubicacion.getText()))
 					_error.setVisible(false);
 				

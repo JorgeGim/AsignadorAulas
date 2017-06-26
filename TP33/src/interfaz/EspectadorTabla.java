@@ -1,6 +1,7 @@
 package interfaz;
 
 import javax.swing.JInternalFrame;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 import negocio.Espectador;
@@ -19,7 +20,6 @@ public class EspectadorTabla implements Espectador{
 
 	@Override
 	public void notificar(int aula, Materia m) {
-		System.out.println("Materia "+ m.getNombre()+" asignada al aula: "+aula);
 		
 		if(_model.getRowCount()<=aula){
 		
@@ -33,6 +33,6 @@ public class EspectadorTabla implements Espectador{
 			_model.setValueAt(m.getNombre(), aula, i);
 		}
 		_frame.updateUI();
+		((BasicInternalFrameUI) _frame.getUI()).setNorthPane(null);
 	}
-
 }

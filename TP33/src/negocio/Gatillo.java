@@ -21,5 +21,4 @@ public class Gatillo {
 			return false;
 		}
 	}
-
 }
