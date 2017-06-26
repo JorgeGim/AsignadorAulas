@@ -71,9 +71,8 @@ public class MateriasJSON
 			throw new IllegalArgumentException("El sistema no puede encontrar el archivo especificado");
 		}
 		catch(JsonSyntaxException e){
-			throw new IllegalArgumentException("El sistema no puede encontrar el archivo especificado");
+			throw new IllegalArgumentException("El tipo de archivo no corresponde al formato GSON");
 		}
-		
 		
 		return ret;
 	}
