@@ -45,7 +45,7 @@ public class VentanaPrincipal {
 		_frame.getContentPane().setLayout(null);
 		_frame.setVisible(true);
 		
-		JInternalFrame iFrame = _tabla.frame;
+		JInternalFrame iFrame = _tabla._frame;
 		_frame.getContentPane().add(iFrame);
 		
 		_instruccion.setBounds(10,56,765,17);

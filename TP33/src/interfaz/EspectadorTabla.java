@@ -28,7 +28,7 @@ public class EspectadorTabla implements Espectador{
 		}	
 		_model.setValueAt(aula, aula, 0);
 			
-		for(int i=m.getInicio(); i<m.getFin()+1;i++){
+		for(int i=m.getInicio()+1; i<m.getFin()+1;i++){
 				
 			_model.setValueAt(m.getNombre(), aula, i);
 		}

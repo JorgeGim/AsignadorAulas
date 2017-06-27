@@ -8,34 +8,28 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.table.DefaultTableModel;
 
 public class VentanaTabla {
 
-	JInternalFrame frame;
+	JInternalFrame _frame;
 	JTable _tabla;
-	DefaultTableModel _model;
+	Modelo _model;
 	EspectadorTabla _espectador;
 	
 	public VentanaTabla() {
-
-		frame = new JInternalFrame();
-		frame.setBounds(0,100, 784, 462);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		((BasicInternalFrameUI) frame.getUI()).setNorthPane(null);
-		frame.setVisible(true);
 		
-		_tabla = new JTable();
-		_model = new DefaultTableModel();
-		
+		_model = new Modelo();
 		_model.addColumn("AULAS");
-		
+	
 		for(int i=0;i<24;i++){
 			_model.addColumn(i+"hs");
 		}
-		_tabla.setModel(_model);
 		
+		_tabla = new JTable();
+		_tabla.getTableHeader().setReorderingAllowed(false) ;
 		_tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		_tabla.setPreferredScrollableViewportSize(new Dimension(757, 410));
+		_tabla.setModel(_model);
 		
 		JScrollPane scrollPane = new JScrollPane(_tabla);
 		scrollPane.setBounds(0,0,757,410);
@@ -47,12 +41,15 @@ public class VentanaTabla {
 		panel.setBounds(0,0,757,410);
 		panel.add(scrollPane);
 		
-		_tabla.setPreferredScrollableViewportSize(new Dimension(757, 410));
-		_tabla.setFillsViewportHeight(true);
+
+		_frame = new JInternalFrame();
+		_frame.setBounds(0,100, 784, 462);
+		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		((BasicInternalFrameUI) _frame.getUI()).setNorthPane(null);
+		_frame.getContentPane().add(panel);
+		_frame.setVisible(true);
 		
-		frame.getContentPane().add(panel);
-		
-		_espectador = new EspectadorTabla(frame,_model);
+		_espectador = new EspectadorTabla(_frame,_model);
 	}
 	
 	public void limpiarTabla(){
