@@ -1,6 +1,8 @@
 package negocio;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import datos.MateriasJSON;
 
@@ -29,6 +31,8 @@ public class Solver
 			_materias = m.getMaterias();
 			
 			limpiarAulas();
+			ordenarMaterias();
+			
 			asignarAulas();
 		}
 		catch(IllegalArgumentException e){
@@ -37,6 +41,11 @@ public class Solver
 		}
 	}
 	
+	private void ordenarMaterias() {
+		
+		Collections.sort(_materias, new Comparador());
+	}
+
 	private void asignarAulas()
 	{			
 		for(Materia materia : _materias)
@@ -80,5 +89,15 @@ public class Solver
 		Aula a = new Aula(_aulas.size());
 		_aulas.add(a);
 		_aulasDisponibles.add(a);
+	}
+	
+	private class Comparador implements Comparator<Materia>{
+
+		@Override
+		public int compare(Materia arg0, Materia arg1) {
+			// TODO Auto-generated method stub
+			return arg0.getInicio() - arg1.getInicio();
+		}
+		
 	}
 }
